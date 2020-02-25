@@ -1,0 +1,108 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+
+</head>
+
+<body> 
+    
+    
+ 
+    <!-- creating the form--> 
+    <form id="userInput"> 
+        Enter a first number: <input type="number" id="number1"> <br> 
+        Enter a second number: <input type="number" id="number2">    
+    </form>
+    
+    <button type ="button" onclick="amicableTest()">AMICABLE TEST</button>    
+    
+    <script type="text/javascript"> 
+    
+    //function displayNumbers(){
+    //   var firstNumber = document.getElementById("number1").value; 
+    //    var secondNumber = document.getElementById("number2").value;
+    //    document.write(firstNumber+secondNumber);
+    // }
+    
+    function isFactor(num, test){
+        var isDivisible = false; 
+        if (num%test==0){
+            isDivisible = true; 
+        }
+        return isDivisible 
+    }    
+    
+    //TESTING isFactor 
+    //x = isFactor(99, 10); 
+    //document.write(x); 
+        
+    function showFactors(array){
+        for (i=0; i<array.length; i++){
+            document.write(array[i]+" "); 
+        }
+    }
+    
+    //TESTING showFactors
+    //var testNumbers = [1,2,3];
+    //showFactors(testNumbers);
+        
+    function addFactors(array){
+        var total = 0; 
+        for (i=0; i<array.length; i++){
+            total += array[i]; 
+        }  
+        return total; 
+    }
+    
+    //TESTING addFactors
+    //var testNumbers = [1,2,3];
+    //sum = addFactors(testNumbers); 
+    //document.write(sum); 
+        
+    function getFactors(num){
+        //array for storing factors
+        var factors=[];  
+        for (i=1; i<num; i++){
+            if (num%i==0){
+                factors.push(i); 
+            }
+        }
+        return factors; 
+    }
+    
+    //TESTING getFactors 
+    //factors = getFactors(90); 
+    //document.write(factors); 
+        
+    function amicableTest(){
+        var num1 = document.getElementById("number1").value;
+        var num2 = document.getElementById("number2").value;
+        
+        //processing num1 
+        num1_factors = getFactors(num1); 
+        document.write("Your first number's factors are: ")
+        showFactors(num1_factors); 
+        num1_totalFactors = addFactors(num1_factors); 
+        
+        //processing num2 
+        num2_factors = getFactors(num2); 
+        document.write("<br>"+"Your second number's factors are: ")
+        showFactors(num2_factors); 
+        num2_totalFactors = addFactors(num2_factors); 
+       
+        document.write("<br>")
+        
+        if (num1_totalFactors==num2 && num2_totalFactors==num1){
+            document.write("Your numbers are amicable!")
+        }else{
+            document.write("Your numbers are NOT amicable, try again!")
+        }    
+    }
+        
+         
+  </script>
+      
+    
+</body>
+
+</html>
